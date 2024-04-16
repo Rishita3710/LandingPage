@@ -61,6 +61,7 @@ header {
      border: 0;
      border-radius: 0 4px 4px 0;
  }
+ 
  .banner_container{
     margin: 40px 0;
     background-color: #d0f8fa;
@@ -115,6 +116,7 @@ header {
 }
 .rightbox{
     padding-bottom: 20px;
+   
 }
 .category_items::-webkit-scrollbar {
     display: none;
