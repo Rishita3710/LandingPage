@@ -11,10 +11,10 @@ header {
     align-items: center;
     border-bottom: 1px solid #b6b1b1;
     position: fixed;
-    top: 0;
+    top: 0; /* Fix navbar at the top */
     width: 100%;
-    
-
+    z-index: 1000; /* Make sure the navbar stays on top */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow effect */
 }
 .logo{
     height: 60px;
@@ -28,15 +28,19 @@ header {
     min-width: 500px;
     justify-content: space-evenly;
  }
- .nav_bar a{
-     font-size: 25px;
-     letter-spacing: .3px;
-     color: orangered;
-     font-weight: 700;
-     text-decoration: none;
-     padding: 28px 0;
-     
- }
+ .nav_bar a {
+    font-size: 20px;
+    letter-spacing: 0.3px;
+    color: #00bfae; /* White color for text */
+    font-weight: 700;
+    text-decoration: none;
+    padding: 28px 0;
+    transition: color 0.3s ease; /* Hover effect for color transition */
+}
+
+.nav_bar a:hover {
+    color: #f8590a; /* Hover color change */
+}
  .search_bar{
     height: 40px;
     min-width: 200px;
@@ -78,31 +82,101 @@ header {
   gap: 10px;
   
 }
-.rightbox{
-    padding-bottom: 20px;
-   
-}
-.category_items::-webkit-scrollbar {
-    display: none;
-}
-#itemContent h1{
-    color: black;
-    font-size: 20px;
-}
-#itemContent button{
-    background-color: #ffff; /* Green */
-    border: 2px solid rgb(255, 111, 0);
-    border-radius: 8px;
-    color: orangered;
-    padding: 2px 4px;
+/* Modern, Sleek Right Box Design */
+.rightbox {
+    width: 250px;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-bottom: 20px;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    transition-duration: 0.4s;
     cursor: pointer;
+    position: relative;
 }
+
+/* Hover effect for card */
+.rightbox:hover {
+    transform: scale(1.05); /* Slight scaling effect */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+}
+
+/* Image Style */
+.rightbox img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0; /* Rounded top corners */
+}
+
+/* Content Section Style */
+#itemContent {
+    padding: 15px 20px;
+    background-color: #fafafa;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-radius: 0 0 10px 10px; /* Rounded bottom corners */
+    transition: background-color 0.3s ease;
+}
+
+/* Item Title */
+#itemContent h1 {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 600;
+    margin: 0 0 10px;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+}
+
+/* Item Description */
+#itemContent .des {
+    font-size: 0.9rem;
+    color: #777;
+    height: 50px;
+    line-height: 1.4em;
+    margin-bottom: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+/* Button Styling */
+#itemContent button {
+    background-color: #00bfae;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect for button */
+#itemContent button:hover {
+    background-color: #00a79d; /* Darker shade of the button color */
+    transform: translateY(-3px); /* Button lifts slightly */
+}
+
+/* Button active state */
+#itemContent button:active {
+    transform: translateY(1px); /* Button presses down when clicked */
+}
+
+
+
+
+
+.heading1{
+    padding-top: 20px;
+    padding-left: 20px;
+    color: orangered;
+} 
 
 .heading2{
     padding-top: 20px;
@@ -142,59 +216,72 @@ header {
     
 }
 
-.carousel{
-    width: 100vw;
-    height: 700px;
+.carousel {
+    width: 100%;
+    height: 500px; /* Adjust the height of the carousel */
     overflow: hidden;
-    margin-top: 80px;
     position: relative;
+    margin-top: 80px; /* Ensure it starts below the fixed navbar */
+    background-color: #f2f2f2; /* Optional background color */
 }
-.carousel .list .item{
+
+/* Carousel Items */
+.carousel .list .item {
     position: absolute;
-    inset: 0 0 0 0;
+    inset: 0;
 }
-.carousel .list .item img{
+
+.carousel .list .item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensure image fills carousel container without distortion */
 }
-.carousel .list .item .content{
-   position: absolute;
-   top:20%;
-   width: 1140px;
-   max-width: 80%;
-   left: 180px;
-   transform: translateX(-50%);
-   padding-left: 30%;
-   box-sizing: border-box;
-   color: #ffffff;
-   text-shadow: 0 5px 10px #0044;
+
+/* Carousel Content */
+.carousel .list .item .content {
+    position: absolute;
+    top: 20%; /* Vertical positioning of the content */
+    left: 10%; /* Move to the left side of the carousel */
+    transform: translateX(0); /* No need for translateX(-50%) */
+    width: 40%; /* Adjust width to fit content */
+    box-sizing: border-box;
+    color: #ffffff;
+    text-shadow: 0 5px 10px #0044;
+    padding-left: 20px; /* Add padding to the left side */
 }
-.carousel .list .item .content .topic{
-   font-weight: bold;
-   font-size: 5em;
-   line-height: 1.7em;
-   color: white;
+
+/* Carousel Title */
+.carousel .list .item .content .topic {
+    font-weight: bold;
+    font-size: 4em;
+    line-height: 1.7em;
+    color: white;
 }
-.carousel .list .item .content .des{
-    font-size: medium;
-    line-height: 1.3em;
+
+/* Carousel Description (Text) */
+.carousel .list .item .content .des {
+    font-size: 1.2em;
+    line-height: 1.5em;
     font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-top: 15px; /* Space between topic and description */
 }
-.carousel .list .item .content .tag{
+
+/* Carousel Tag */
+.carousel .list .item .content .tag {
     padding-top: 20px;
-    font-size: larger;
+    font-size: 1.5em;
     font-weight: bold;
     color: rgb(91, 196, 237);
     padding-bottom: 20px;
 }
 
-.carousel .list .item .content button{
+/* Carousel Button */
+.carousel .list .item .content button {
     border: none;
     width: 90px;
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
     font-weight: 600;
     background-color: whitesmoke;
-    padding: 4px 4px 4px 4px;
-    
+    padding: 4px 4px;
+    cursor: pointer;
 }
